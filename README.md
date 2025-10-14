@@ -79,5 +79,7 @@ public 폴더는 import로 접근할 수 없음. → src 파일에서는 그냥 
 반대로 src 폴더 안의 파일은 반드시 import 해서 사용해야 함 → /로 접근 불가능
 ```
 
-####
-my-app4: props
+#### 🍕
+my-app4: props  
+my-app4: useState(hooks)  
+         - Com4.jsx: login, logout  
