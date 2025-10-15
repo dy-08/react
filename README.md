@@ -89,3 +89,4 @@ my-app6: useEffect(hooks)
          - Com1.jsx: [값] 코드 예시
 my-app7: useEffect(hooks) – localStorage
          - Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용
+         - Com2.jsx: useEffect(()=>{},[]), 화면이 열릴 때 한번만 실행되는 메세지 코드 예시
