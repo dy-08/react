@@ -81,5 +81,9 @@ public 폴더는 import로 접근할 수 없음. → src 파일에서는 그냥 
 
 #### 🍕
 my-app4: props  
-my-app4: useState(hooks)  
+my-app5: useState(hooks)  
          - Com4.jsx: login, logout  
+my-app6: useEffect(hooks)
+         - App.jsx: useEffect(()=>{},[의존값])
+          : []–한번만, 생략–랜더링 시 계속 실행, [값]–값이 변경될 때마다
+         - Com1.jsx: [값] 코드 예시
