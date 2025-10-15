@@ -87,3 +87,5 @@ my-app6: useEffect(hooks)
          - App.jsx: useEffect(()=>{},[의존값])
           : []–한번만, 생략–랜더링 시 계속 실행, [값]–값이 변경될 때마다
          - Com1.jsx: [값] 코드 예시
+my-app7: useEffect(hooks) – localStorage
+         - Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용
