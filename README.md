@@ -79,14 +79,131 @@ public 폴더는 import로 접근할 수 없음. → src 파일에서는 그냥 
 반대로 src 폴더 안의 파일은 반드시 import 해서 사용해야 함 → /로 접근 불가능
 ```
 
-#### 🍕
+### 🍕
 my-app4: props  
 my-app5: useState(hooks)  
-         - Com4.jsx: login, logout  
-my-app6: useEffect(hooks)
-         - App.jsx: useEffect(()=>{},[의존값])
-          : []–한번만, 생략–랜더링 시 계속 실행, [값]–값이 변경될 때마다
-         - Com1.jsx: [값] 코드 예시
-my-app7: useEffect(hooks) – localStorage
-         - Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용
-         - Com2.jsx: useEffect(()=>{},[]), 화면이 열릴 때 한번만 실행되는 메세지 코드 예시
+         - Com4.jsx: login, logout    
+my-app6: useEffect(hooks)  
+         - App.jsx: useEffect(()=>{},[의존값])  
+          : [] – 한번만, 생략 – 랜더링 시 계속 실행, [값] – 값이 변경될 때마다
+         - Com1.jsx: [값] 코드 예시  
+my-app7: useEffect(hooks) – localStorage  
+         - Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용  
+         - Com2.jsx: useEffect(()=>{},[]), 화면이 열릴 때 한번만 실행되는 메세지 코드 예시  
+         - Com3.jsx: useEffect(()=>{},[name]), 이름이 변경될 때마다 체크를해서 출력되는 코드 예시    
+
+#### SASS 설치  
+- 프로젝트 폴더(my-app) 이동 후  
+- <code>npm i sass</code>  
+
+  
+#### SASS 파일  
+- 파일명: App.scss  
+- <code>$main: skyblue;</code>  
+- <code>body{ background-color: $main }</code>  
+- <code>body{ .todoList{ h1 { } } }</code>  
+- sass는 module화 시켜서 사용 (호출– import styles from './Acom01.module.scss';)  
+- assets > sass 폴더 생성 후 파일보관
+- import styles from '../assets/scss/a.module.scss';
+```
+body{ 
+    background-color: $main;
+    .todoList{ 
+        padding: 10px;
+
+        h1 { 
+            <!-- &: 내가 가진 부모 -->
+            &:hover {  
+                ...  
+            }  
+  
+            &.on {  
+                ...  
+            }   
+        }   
+    }  
+}  
+```  
+- _var.scss: _가 붙은 파일은 번역되지않음  
+```_var.scss  
+    $bgColor: skyblue;  
+    $mainSize: 25px;  
+    $radius: 10px;  
+```  
+  
+#### _파일 호출  
+@use './var' as *; (use에서는 확장자, _ ❌) => Error발생이 많음    
+@use './var' as v; (use에서는 확장자, _ ❌) => 많이 쓰임    
+  
+#### 사용법  
+color: v.$main;  
+
+#### 반복 패턴 정의 (Mixin, include)
+- Mixin (따로 파일을 만들어서 불러옴 모듈처럼)
+- _mixin.scss 파일명은 내마음대로 언더바 중요  
+```_mixin.scss
+@use './var as v; // 정해진 변수를 사용하고싶을 때 use 활용
+
+@mixin btnBase{
+        // background-color: white;
+        background-color: v.$main;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+        &:hover { // 호버됐을 때
+            backgropund-color: darkblue;
+        }
+}
+```
+#### include
+```
+    @include btnBase;
+```
+
+#### 활용예
+```a.scss
+@use './var' as v; // 정해진 변수를 사용하고싶을 때 use 활용
+@use  '.btnBase' as m;  
+@use 'sass:color'; // sass가 제공하는 color를 가져올 수 있음 ✨
+
+@mixin btnBase{
+        
+        h2 {
+            ...
+        }
+
+        h3 {
+            font-size: 30px;
+            &:hover { // h3을 hover시키면
+                // 자기가 세팅한 색상을 넣으면됨
+                background-color: color.adjust(blue); ✨
+                // $lightness: -(어둡게), +(밝게)
+                background-color: color.adjust($main, $lightness: -10%);  ✨
+
+            }
+        }
+
+        .btn {
+            @include m.btnBase;
+            @include m.btnBase(20px); <= 이런식으로 매개변수를 넣으면 ✅
+            @include m.btnBase(20px){ 
+                color: red;  <= 오버라이드 된 코드 (기본코드+추가코드가 적용됨) 📍
+            }  
+            
+        }
+}
+```
+
+#### Mixin에 prams 입력 가능
+```
+@mixin btnBase($pad: 16px) {
+    background-color: v.$main;
+    padding: $pad; <= 반영됨 ✅
+    ...
+    @content; // 오버라이드 – btn만들때 추가하고싶은거 code로 작성가능 📍
+    &:hover {
+        background-color: blue;
+    }
+}
+```
+
