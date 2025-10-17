@@ -91,6 +91,9 @@ my-app7: useEffect(hooks) – localStorage
          - Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용  
          - Com2.jsx: useEffect(()=>{},[]), 화면이 열릴 때 한번만 실행되는 메세지 코드 예시  
          - Com3.jsx: useEffect(()=>{},[name]), 이름이 변경될 때마다 체크를해서 출력되는 코드 예시    
+my-app8: router (hooks)
+         - react-router-dom: 코드 예시
+         - useNavigate: Nav2.jsx 코드 예시
 
 #### SASS 설치  
 - 프로젝트 폴더(my-app) 이동 후  
@@ -207,3 +210,94 @@ color: v.$main;
 }
 ```
 
+### router (hooks)
+#### router 설치 
+- npm i react-router-dom  
+#### router 버전확인
+- npm react-router-dom -v  
+#### import 시 순서 중요
+- import { BrowserRouter, Routes, Route } from 'react';  
+#### App.jsx 초기세팅
+```App.jsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './com/Nav';
+import Home from './com/Home';
+import About from './com/About';
+import Map from './com/Map';
+// <Route>: 해당경로에 컴포넌트를 매칭
+// <Routes>: 여러개의 <Route>들을 감싸는 컨테이너
+// <BrowserRouter>: <Routes>를 사용할 수 있게 해주는 컨테이너
+// <Route path="/about" element={<Com01 />}>
+// <Link to="/about">회사소개</Link> => a 태그와 동일
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Nav />
+            <h1> ... </h1> 태그가 있어도 상관없음
+            <Routes>
+                {/* 스크립에 비유하면 이 공간안에 랜더링됨 (예: Routes.innerHTML = code...) */}
+                <Route path='/home' element={<Home />} />
+                {/* element: 실제 연결시켜주는 옵션 */}
+                <Route path='/about' element={<About />} />
+                <Route path='/map' element={<Map />} />
+            </Routes>
+
+            ... Routes는 반복해도 상관없음
+        </BrowserRouter>
+    );
+};
+
+export default App;
+```
+
+#### 컴포넌트 페이지 Home, About, Map + Nav 필요 (Link 사용하기 위함)
+```Nav.jsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './com/Nav';
+import Home from './com/Home';
+import About from './com/About';
+import Map from './com/Map';
+// <Route>: 해당경로에 컴포넌트를 매칭
+// <Routes>: 여러개의 <Route>들을 감싸는 컨테이너
+// <BrowserRouter>: <Routes>를 사용할 수 있게 해주는 컨테이너
+// <Route path="/about" element={<Com01 />}>
+// <Link to="/about">회사소개</Link> => a 태그와 동일
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Nav />
+            <Routes>
+                {/* 스크립에 비유하면 이 공간안에 랜더링됨 (예: Routes.innerHTML = code...) */}
+                <Route path='/home' element={<Home />} />
+                {/* element: 실제 연결시켜주는 옵션 */}
+                <Route path='/about' element={<About />} />
+                <Route path='/map' element={<Map />} />
+            </Routes>
+        </BrowserRouter>
+    );
+};
+
+export default App;
+```
+
+#### useNavigate 코드 예시
+```Nav2.jsx
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+const Nav2 = () => {
+    let navigator = useNavigate();
+    return (
+        <div>
+            <button onClick={() => navigator('/home')}>홈으로</button>
+            <button onClick={() => navigator('/about')}>회사소개</button>
+            <button onClick={() => navigator('/map')}>오시는 길</button>
+        </div>
+    );
+};
+
+export default Nav2;
+```
