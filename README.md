@@ -218,7 +218,7 @@ color: v.$main;
 #### import 시 순서 중요
 - import { BrowserRouter, Routes, Route } from 'react';  
 #### App.jsx 초기세팅
-```App.jsx
+```App.jsx (학습용이라 App.jsx에 BrowserRouter활용해서 nav를 생성했음 )
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './com/Nav';
@@ -301,3 +301,45 @@ const Nav2 = () => {
 
 export default Nav2;
 ```
+### 실무처럼 사용해보기 
+- WHY? 리덕스 즉, 대용량 리엑트 처리할 때 충돌위험이 있어서 이런 방식을 선호  
+#### main.jsx 
+```main.jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { BrowserRouter } from 'react-router-dom';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter> ✨
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
+```
+#### App.jsx
+```App.jsx
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Nav from './com/Nav';
+import Subpage from './com/Subpage';
+
+function App() {
+    return (
+        <>
+            <Nav />
+            <hr />
+            <Routes>
+                <Route path='/home' element={<Subpage title='회사' sub='좋은 회사' />} />
+                <Route path='/about' element={<Subpage title='회사소개' sub='무한상사' />} />
+                <Route path='/contact' element={<Subpage title='문의' sub='게시판' />} />
+            </Routes>
+        </>
+    );
+}
+
+export default App;
+```
+#### com > Nav.jsx, Subpage.jsx
