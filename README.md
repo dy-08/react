@@ -94,6 +94,11 @@ my-app7: useEffect(hooks) – localStorage
 my-app8: router (hooks)
          - react-router-dom: 코드 예시
          - useNavigate: Nav2.jsx 코드 예시
+my-app11: axios 설치방법, react+sass 폴더 디렉토리 구조
+         - 폴더구조: scss, com, pages, styles ...
+         - Navbar 생성, BrowserRouter as Router 이름변경해서 활용방법
+         - 무한슬라이더 생성 (Home 페이지 슬라이드 적용완료)
+
 
 #### SASS 설치  
 - 프로젝트 폴더(my-app) 이동 후  
@@ -343,3 +348,8 @@ function App() {
 export default App;
 ```
 #### com > Nav.jsx, Subpage.jsx
+
+#### axios 설치
+> npm i axios  
+#### axios 버전확인
+> npm axios -v  

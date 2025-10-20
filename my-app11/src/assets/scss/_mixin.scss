@@ -1,0 +1,44 @@
+@use './var' as v;
+@use 'sass:color';
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin card {
+    background-color: white;
+    border-radius: v.$radius;
+    box-shadow: v.$shadow;
+}
+
+// bg color ❌ => main이 defalut
+// $color ❌ => #fff
+@mixin buttons($bg: v.$main, $color: #fff) {
+    background-color: $bg;
+    color: $color;
+    border: 0;
+    border-radius: v.$radius;
+    padding: 10px;
+    transition: all 0.3s;
+    // &: 내가
+    &:hover {
+        // sass에서 제공하는 color (예: lightness, ...)
+        // adjust: 밝기 ( -: 어둡게, +:밝게 )
+        // bg를 받아서 밝기조절을 함
+        background-color: color.adjust($bg, $lightness: -10%);
+    }
+}
+
+@mixin fade-up($upp: 20px) {
+    opacity: 0;
+    // 글자 크기에 따라 어디부터 올라올지 핸들링하고싶을 때 파람을 활용
+    transform: translateY($upp);
+    transition: all 0.3s;
+    // 나한테 show클래스가 붙으면
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

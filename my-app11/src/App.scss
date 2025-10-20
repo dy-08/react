@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    height: 100%;
+}
+a {
+    text-decoration: none;
+    color: inherit; // 부모 색상이 있다면 가져감
+}
+ul {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+}
