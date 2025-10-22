@@ -91,21 +91,31 @@ public 폴더는 import로 접근할 수 없음. → src 파일에서는 그냥 
 ### 🍕
 
 my-app4: props  
-my-app5: useState(hooks)
 
--   Com4.jsx: login, logout  
-    my-app6: useEffect(hooks)
--   App.jsx: useEffect(()=>{},[의존값])  
-     : [] – 한번만, 생략 – 랜더링 시 계속 실행, [값] – 값이 변경될 때마다 - Com1.jsx: [값] 코드 예시  
-    my-app7: useEffect(hooks) – localStorage
+my-app5: useState(hooks)
+- Com4.jsx: login, logout    
+
+my-app6: useEffect(hooks)
+- App.jsx: useEffect(()=>{},[의존값])  
+  : [] – 한번만, 생략 – 랜더링 시 계속 실행, [값] – 값이 변경될 때마다 - Com1.jsx: [값] 코드 예시  
+    
+my-app7: useEffect(hooks) – localStorage
 -   Com1.jsx: 자동저장 메모장 코드 예시, status => 단축평가 사용
 -   Com2.jsx: useEffect(()=>{},[]), 화면이 열릴 때 한번만 실행되는 메세지 코드 예시
 -   Com3.jsx: useEffect(()=>{},[name]), 이름이 변경될 때마다 체크를해서 출력되는 코드 예시  
-    my-app8: router (hooks) - react-router-dom: 코드 예시 - useNavigate: Nav2.jsx 코드 예시  
-    my-app11: axios 설치방법, react+sass 폴더 디렉토리 구조 - 폴더구조: scss, com, pages, styles ...
--   Navbar 생성, BrowserRouter as Router 이름변경해서 활용방법 - 무한슬라이더 생성 (Home 페이지 슬라이드 적용완료)
--   Contact: jsx, scss 파일생성 및 IntersectionObserver 사용
--   axios (fetch 대용)
+    
+my-app8: router (hooks) - react-router-dom: 코드 예시 - useNavigate: Nav2.jsx 코드 예시  
+
+my-app11: axios 설치방법, react+sass 폴더 디렉토리 구조 - 폴더구조: scss, com, pages, styles ...
+- Navbar 생성, BrowserRouter as Router 이름변경해서 활용방법 - 무한슬라이더 생성 (Home 페이지 슬라이드 적용완료)
+- Contact: jsx, scss 파일생성 및 IntersectionObserver 사용
+- axios (fetch 대용) 
+
+my-app12: typescript 설치 및 폴더구조
+- 설치할 때 타입스크립트를 같이 설치해야 함 (별도로하면 손이 많이감)
+> npm create vite@latest my-app12 -- --template react-swc-ts
+- 모든확장자가 jsx => tsx로 변경되어있음
+
 
 #### SASS 설치
 
@@ -411,3 +421,14 @@ package.json
 > let { data } = await axios.get('/gallery.json'); // ✨  
 #### axios import
 > import axios from 'axios';  
+
+#### typescript (page)
+- 홈 (home): 동영상 3개 전환 각 동영상마다 텍스트 오버랩   
+- 서브메뉴1 (weather): 현재 시간, 날짜, 오늘 날씨 및 아이콘  
+- 서브메뉴2 (cart): 상품목록 -> 수량증가 및 감소기능  
+- 서브메뉴3 (product): 장바구니 (서브메뉴 2에서 선택한 목록)  
+- 서브메뉴4 (contact): 자유구성  
+- 타입스크립트 정의파일: cart, product, weather
+
+#### typescript 설치
+> npm create vite@latest my-app12 -- --template react-swc-ts
