@@ -115,7 +115,13 @@ my-app12: typescript 설치 및 폴더구조
 - 설치할 때 타입스크립트를 같이 설치해야 함 (별도로하면 손이 많이감)
 > npm create vite@latest my-app12 -- --template react-swc-ts
 - 모든확장자가 jsx => tsx로 변경되어있음
-
+1. \_var.scss, \_mixin.scss: 초기세팅 및 템플릿 세팅  
+2. index.scss 초기세팅 (global.css 처럼 세팅)
+3. Navbar.tsx (map함수 list생성)
+4. App.tsx Navbar, Routes, Route 세팅 및 import
+5. Navbar.module.scss (include 활용, option, 메뉴에서 after로 under_bar)
+6. Home: 동영상 3개 (Props 주고 받는 방법)
+7. kakao.d.ts 파일 생성 (kakao API)
 
 #### SASS 설치
 
@@ -432,3 +438,11 @@ package.json
 
 #### typescript 설치
 > npm create vite@latest my-app12 -- --template react-swc-ts
+
+#### 현재위치 가져오기 (Web API)  
+```현재위치 가져오기 (web api)
+        navigator.geolocation.getCurrentPosition(
+            async (pos) => {},
+            (error) => {}
+        );
+```
