@@ -98,16 +98,17 @@ const Weather = () => {
         );
     }, []); // useEffect end
     if (error) return <p className={styles.error}>{error}</p>;
+    if (!weather) return null;
     return (
         <div className={styles.weather}>
             <div className={styles.info}>
                 <h2>오늘의 현재 날씨</h2>
                 <p>{time}</p>
                 <div className={styles.datas}>
-                    <p>{weather?.city}</p>
-                    <p>{weather?.temp} ℃</p>
-                    <img src={`https://openweathermap.org/img/wn/${weather?.icon}@2x.png`} />
-                    <p>{weather?.desc}</p>
+                    <p>{weather.city}</p>
+                    <p>{weather.temp} ℃</p>
+                    <img src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`} />
+                    <p>{weather.desc}</p>
                 </div>
             </div>
             <div id='map' className={styles.map}></div>
